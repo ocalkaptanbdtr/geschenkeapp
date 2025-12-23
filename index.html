@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Important Questions 🐾</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #fffafc;
+      margin-top: 40px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .choices {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 25px;
+    }
+
+    .photo-button {
+      width: 160px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .photo-button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    #popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    #popup img {
+      max-width: 80%;
+      border-radius: 20px;
+    }
+
+    #final {
+      display: none;
+      margin-top: 40px;
+    }
+
+    #final img {
+      max-width: 80%;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="question-title">🐶 Question 1</h1>
+  <p id="question-text" style="font-size: 20px;"></p>
+
+  <div class="choices">
+    <img src="https://private-user-images.githubusercontent.com/96614838/529433071-6e711375-aacb-4a7d-a080-2a7f1426f347.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjY0NDgwNzEsIm5iZiI6MTc2NjQ0Nzc3MSwicGF0aCI6Ii85NjYxNDgzOC81Mjk0MzMwNzEtNmU3MTEzNzUtYWFjYi00YTdkLWEwODAtMmE3ZjE0MjZmMzQ3LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEyMjIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMjIyVDIzNTYxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdkNjY3NjcwZmY0MjM3Zjk4NTdlOWNlMzFlZWZhMjJkMWIxYWI4OTQxNWFhZDNkYjUyMzQ3MzI0Y2MxMDYxYzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.jR1X09j5BhIJc4Bfr8pwDjfFd5HnDR0BWU-JaMgGpVs" class="photo-button" onclick="answer()">
+    <img src="https://private-user-images.githubusercontent.com/96614838/529433071-6e711375-aacb-4a7d-a080-2a7f1426f347.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjY0NDgwNzEsIm5iZiI6MTc2NjQ0Nzc3MSwicGF0aCI6Ii85NjYxNDgzOC81Mjk0MzMwNzEtNmU3MTEzNzUtYWFjYi00YTdkLWEwODAtMmE3ZjE0MjZmMzQ3LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEyMjIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMjIyVDIzNTYxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdkNjY3NjcwZmY0MjM3Zjk4NTdlOWNlMzFlZWZhMjJkMWIxYWI4OTQxNWFhZDNkYjUyMzQ3MzI0Y2MxMDYxYzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.jR1X09j5BhIJc4Bfr8pwDjfFd5HnDR0BWU-JaMgGpVs" class="photo-button" onclick="answer()">
+  </div>
+
+  <!-- IMAGE POPUP -->
+  <div id="popup">
+    <img id="popup-img" src="https://private-user-images.githubusercontent.com/96614838/529433071-6e711375-aacb-4a7d-a080-2a7f1426f347.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjY0NDgwNzEsIm5iZiI6MTc2NjQ0Nzc3MSwicGF0aCI6Ii85NjYxNDgzOC81Mjk0MzMwNzEtNmU3MTEzNzUtYWFjYi00YTdkLWEwODAtMmE3ZjE0MjZmMzQ3LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEyMjIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMjIyVDIzNTYxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdkNjY3NjcwZmY0MjM3Zjk4NTdlOWNlMzFlZWZhMjJkMWIxYWI4OTQxNWFhZDNkYjUyMzQ3MzI0Y2MxMDYxYzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.jR1X09j5BhIJc4Bfr8pwDjfFd5HnDR0BWU-JaMgGpVs">
+  </div>
+
+  <!-- FINAL GIFT -->
+  <div id="final">
+    <h2>🎁 Your Final Surprise 🎁</h2>
+    <img src="final.gif" alt="Final Gift">
+    <p>
+      <a href="https://your-gift-link.com" target="_blank">
+        Click here for your gift 💝
+      </a>
+    </p>
+  </div>
+
+  <script>
+    const questions = [
+      "Are you being a good köpekska this year?",
+      "Do you promise more cuddles?",
+      "Will you always share snacks?",
+      "Are you my favorite person?",
+      "Ready for your surprise?"
+    ];
+
+    const images = [
+      "https://private-user-images.githubusercontent.com/96614838/529433071-6e711375-aacb-4a7d-a080-2a7f1426f347.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjY0NDgwNzEsIm5iZiI6MTc2NjQ0Nzc3MSwicGF0aCI6Ii85NjYxNDgzOC81Mjk0MzMwNzEtNmU3MTEzNzUtYWFjYi00YTdkLWEwODAtMmE3ZjE0MjZmMzQ3LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEyMjIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMjIyVDIzNTYxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdkNjY3NjcwZmY0MjM3Zjk4NTdlOWNlMzFlZWZhMjJkMWIxYWI4OTQxNWFhZDNkYjUyMzQ3MzI0Y2MxMDYxYzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.jR1X09j5BhIJc4Bfr8pwDjfFd5HnDR0BWU-JaMgGpVs",
+      "https://private-user-images.githubusercontent.com/96614838/529433071-6e711375-aacb-4a7d-a080-2a7f1426f347.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjY0NDgwNzEsIm5iZiI6MTc2NjQ0Nzc3MSwicGF0aCI6Ii85NjYxNDgzOC81Mjk0MzMwNzEtNmU3MTEzNzUtYWFjYi00YTdkLWEwODAtMmE3ZjE0MjZmMzQ3LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEyMjIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMjIyVDIzNTYxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdkNjY3NjcwZmY0MjM3Zjk4NTdlOWNlMzFlZWZhMjJkMWIxYWI4OTQxNWFhZDNkYjUyMzQ3MzI0Y2MxMDYxYzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.jR1X09j5BhIJc4Bfr8pwDjfFd5HnDR0BWU-JaMgGpVs",
+      "https://private-user-images.githubusercontent.com/96614838/529433071-6e711375-aacb-4a7d-a080-2a7f1426f347.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjY0NDgwNzEsIm5iZiI6MTc2NjQ0Nzc3MSwicGF0aCI6Ii85NjYxNDgzOC81Mjk0MzMwNzEtNmU3MTEzNzUtYWFjYi00YTdkLWEwODAtMmE3ZjE0MjZmMzQ3LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEyMjIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMjIyVDIzNTYxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdkNjY3NjcwZmY0MjM3Zjk4NTdlOWNlMzFlZWZhMjJkMWIxYWI4OTQxNWFhZDNkYjUyMzQ3MzI0Y2MxMDYxYzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.jR1X09j5BhIJc4Bfr8pwDjfFd5HnDR0BWU-JaMgGpVs",
+      "https://private-user-images.githubusercontent.com/96614838/529433071-6e711375-aacb-4a7d-a080-2a7f1426f347.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjY0NDgwNzEsIm5iZiI6MTc2NjQ0Nzc3MSwicGF0aCI6Ii85NjYxNDgzOC81Mjk0MzMwNzEtNmU3MTEzNzUtYWFjYi00YTdkLWEwODAtMmE3ZjE0MjZmMzQ3LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEyMjIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMjIyVDIzNTYxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdkNjY3NjcwZmY0MjM3Zjk4NTdlOWNlMzFlZWZhMjJkMWIxYWI4OTQxNWFhZDNkYjUyMzQ3MzI0Y2MxMDYxYzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.jR1X09j5BhIJc4Bfr8pwDjfFd5HnDR0BWU-JaMgGpVs",
+      "https://private-user-images.githubusercontent.com/96614838/529433071-6e711375-aacb-4a7d-a080-2a7f1426f347.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjY0NDgwNzEsIm5iZiI6MTc2NjQ0Nzc3MSwicGF0aCI6Ii85NjYxNDgzOC81Mjk0MzMwNzEtNmU3MTEzNzUtYWFjYi00YTdkLWEwODAtMmE3ZjE0MjZmMzQ3LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEyMjIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMjIyVDIzNTYxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdkNjY3NjcwZmY0MjM3Zjk4NTdlOWNlMzFlZWZhMjJkMWIxYWI4OTQxNWFhZDNkYjUyMzQ3MzI0Y2MxMDYxYzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.jR1X09j5BhIJc4Bfr8pwDjfFd5HnDR0BWU-JaMgGpVs"
+    ];
+
+    let current = 0;
+
+    const title = document.getElementById("question-title");
+    const text = document.getElementById("question-text");
+    const popup = document.getElementById("popup");
+    const popupImg = document.getElementById("popup-img");
+    const choices = document.querySelector(".choices");
+    const final = document.getElementById("final");
+
+    function loadQuestion() {
+      text.textContent = questions[current];
+      title.textContent = "🐶 Question " + (current + 1);
+    }
+
+    function answer() {
+      popupImg.src = images[current];
+      popup.style.display = "flex";
+
+      setTimeout(() => {
+        popup.style.display = "none";
+        current++;
+
+        if (current < questions.length) {
+          loadQuestion();
+        } else {
+          showFinal();
+        }
+      }, 5000);
+    }
+
+    function showFinal() {
+      title.style.display = "none";
+      text.style.display = "none";
+      choices.style.display = "none";
+      final.style.display = "block";
+    }
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>
